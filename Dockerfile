@@ -31,7 +31,7 @@ RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php5/fpm/php.ini
 
 RUN mkdir -p        /var/www
 ADD build/conf/wonderna.com.conf   /etc/nginx/sites-available/wonderna.com.conf
-RUN 
+RUN ln -s /etc/nginx/sites-available/wonderna.com.conf /etc/nginx/sites-enable/wonderna.com.conf
 RUN mkdir           /etc/service/nginx
 ADD build/nginx.sh  /etc/service/nginx/run
 RUN chmod +x        /etc/service/nginx/run
