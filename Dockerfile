@@ -20,14 +20,14 @@ RUN apt-get update
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y --force-yes php5-cli php5-fpm php5-mysql php5-pgsql php5-sqlite php5-curl\
 		       php5-gd php5-mcrypt php5-intl php5-imap php5-tidy
 
-RUN sed -i "s/;date.timezone =.*/date.timezone = America/Toronto/" /etc/php5/fpm/php.ini
-RUN sed -i "s/;date.timezone =.*/date.timezone = America/Toronto/" /etc/php5/cli/php.ini
+RUN sed -i -e "s/;date.timezone =.*/date.timezone = America/Toronto/" /etc/php5/fpm/php.ini
+RUN sed -i -e "s/;date.timezone =.*/date.timezone = America/Toronto/" /etc/php5/cli/php.ini
 
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y nginx
 
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php5/fpm/php-fpm.conf
-RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php5/fpm/php.ini
+RUN sed -i -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php5/fpm/php.ini
 
 RUN mkdir -p        /var/www
 ADD build/conf/wonderna.com.conf   /etc/nginx/sites-available/wonderna.com.conf
