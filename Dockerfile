@@ -30,8 +30,8 @@ RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php5/fpm/php-fpm.co
 RUN sed -i -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php5/fpm/php.ini
 
 RUN mkdir -p        /var/www
-ADD build/conf/wonderna.com.conf   /etc/nginx/sites-available/wonderna.com.conf
-RUN ln -s /etc/nginx/sites-available/wonderna.com.conf /etc/nginx/sites-enabled/wonderna.com.conf
+ADD build/conf/tcbc2001.com.conf  /etc/nginx/sites-available/tcbc2001.com.conf
+RUN ln -s /etc/nginx/sites-available/tcbc2001.com.conf /etc/nginx/sites-enabled/tcbc2001.com.conf
 RUN mkdir           /etc/service/nginx
 ADD build/nginx.sh  /etc/service/nginx/run
 RUN chmod +x        /etc/service/nginx/run
@@ -39,8 +39,6 @@ RUN mkdir           /etc/service/phpfpm
 ADD build/phpfpm.sh /etc/service/phpfpm/run
 RUN chmod +x        /etc/service/phpfpm/run
 
-#EXPOSE 80
-#EXPOSE 443
 # End Nginx-PHP
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
