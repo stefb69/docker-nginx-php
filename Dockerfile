@@ -21,6 +21,7 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y --force-yes php5-cli php
 		       php5-gd php5-mcrypt php5-intl php5-imap php5-tidy
 
 RUN sed -i -e "s/;date.timezone =.*/date.timezone = America\/Toronto/" /etc/php5/fpm/php.ini
+RUN sed -i -e "s/;output_buffering =.*/output_buffering = off" /etc/php5/fpm/php.ini
 RUN sed -i -e "s/;date.timezone =.*/date.timezone = America\/Toronto/" /etc/php5/cli/php.ini
 
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y nginx
