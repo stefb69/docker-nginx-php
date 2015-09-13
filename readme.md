@@ -22,3 +22,6 @@ This will bind local port 80 to the container's port 80. This means you should b
 * `/sbin/my_init` - Run the init scripts used to kick off long-running processes and other bootstrapping, as per [phusion/baseimage-docker](https://github.com/phusion/baseimage-docker)
 * `--enable-insecure-key` - Enable a generated SSL key so you can SSH into the container, again as per [phusion/baseimage-docker](https://github.com/phusion/baseimage-docker). Generate your own SSH key for production use.
 * If you use this with [fideloper/docker-mysql](https://github.com/fideloper/docker-mysql), then [link this container](http://docs.docker.io/en/latest/use/working_with_links_names/) with MySQL's (after running the MySQL container first) via `-link mysql:db`
+
+## Run for my site
+docker run --name nginx -v /home/ubuntu/app:/var/www/tcbc2001.com:rw -p 80:80 -p 443:443 --link mysql:mysql -d canadatom/docker-nginx-php /sbin/my_init --enable-insecure-key
