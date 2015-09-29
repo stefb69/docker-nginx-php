@@ -1,0 +1,9 @@
+web:
+  image: web
+  container_name: web
+  volumes:
+    - /Users/tom/Projects/devops_tools/dashboard:/var/www/dashboard/web
+    - /Users/tom/Projects/nginx-conf/dashboard.conf:/etc/nginx/sites-enabled/dashboard.conf
+  ports:
+    - 8080:8080
+  
