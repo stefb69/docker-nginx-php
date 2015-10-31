@@ -1,9 +1,9 @@
 web:
-  image: web
+  build: .
   container_name: web
   volumes:
-    - /Users/tom/Projects/devops_tools/dashboard:/var/www/dashboard/web
-    - /Users/tom/Projects/nginx-conf/dashboard.conf:/etc/nginx/sites-enabled/dashboard.conf
+    - /home/ubuntu/app/web:/var/www/tcbc2001.com/web
   ports:
-    - 8080:8080
-  
+    - 80:80
+    - 443:443
+
