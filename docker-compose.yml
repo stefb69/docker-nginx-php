@@ -2,8 +2,18 @@ web:
   build: .
   container_name: web
   volumes:
-    - /home/ubuntu/app/web:/var/www/tcbc2001.com/web
+    - /var/www/web:/var/www/web
+    - /var/www/moodledata:/var/www/moodledata
   ports:
     - 80:80
     - 443:443
+  links:
+    - db
 
+db:
+  image: mysql
+  container_name: mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=Wclr0cks!
+  volumes:
+    - /root/mysql/datadir:/var/lib/mysql

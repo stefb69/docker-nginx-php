@@ -29,8 +29,8 @@ RUN apt-get update \
   && sed -i -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php5/fpm/php.ini \
   && mkdir -p        /var/www \
   && mkdir           /etc/service/nginx
-ADD build/conf/tcbc2001.com.conf  /etc/nginx/sites-available/tcbc2001.com.conf
-RUN ln -s /etc/nginx/sites-available/tcbc2001.com.conf /etc/nginx/sites-enabled/tcbc2001.com.conf
+ADD build/conf/web.conf  /etc/nginx/sites-available/web.conf
+RUN ln -s /etc/nginx/sites-available/web.conf /etc/nginx/sites-enabled/web.conf
 ADD build/nginx.sh  /etc/service/nginx/run
 RUN chmod +x        /etc/service/nginx/run \
   && mkdir           /etc/service/phpfpm
