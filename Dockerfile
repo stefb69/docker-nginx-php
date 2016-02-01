@@ -17,9 +17,10 @@ RUN apt-get update \
   && add-apt-repository -y ppa:ondrej/php \
   && add-apt-repository -y ppa:nginx/stable \
   && add-apt-repository -y ppa:chris-lea/node.js \
+  && add-apt-repository -y ppa:ecometrica/servers \
   && apt-get update \
   && DEBIAN_FRONTEND="noninteractive" apt-get install -y --force-yes php7.0-cli php7.0-fpm php-apcu php-apcu-bc php7.0-mysql \
-     php7.0-curl php7.0-gd php7.0-mcrypt php7.0-intl php7.0-opcache nodejs \
+     php7.0-curl php7.0-gd php7.0-mcrypt php7.0-intl php7.0-opcache nodejs wkhtmltopdf \
   && sed -i -e "s/;date.timezone =.*/date.timezone = Europe\/Paris/" /etc/php/7.0/fpm/php.ini \
   && sed -i -e "s/output_buffering = 4096/output_buffering = off/" /etc/php/7.0/fpm/php.ini \
   && sed -i -e "s/upload_max_filesize = 2M/upload_max_filesize = 100M/" /etc/php/7.0/fpm/php.ini \
