@@ -16,9 +16,10 @@ RUN apt-get update \
   && DEBIAN_FRONTEND="noninteractive" apt-get install -y emacs24-nox curl wget build-essential python-software-properties \
   && add-apt-repository -y ppa:ondrej/php \
   && add-apt-repository -y ppa:nginx/stable \
+  && add-apt-repository -y ppa:chris-lea/node.js \
   && apt-get update \
   && DEBIAN_FRONTEND="noninteractive" apt-get install -y --force-yes php7.0-cli php7.0-fpm php-7.0-apcu php7.0-mysql \
-     php7.0-curl php7.0-gd php7.0-mcrypt php7.0-intl \
+     php7.0-curl php7.0-gd php7.0-mcrypt php7.0-intl nodejs \
   && sed -i -e "s/;date.timezone =.*/date.timezone = Europe\/Paris/" /etc/php/7.0/fpm/php.ini \
   && sed -i -e "s/output_buffering = 4096/output_buffering = off/" /etc/php/7.0/fpm/php.ini \
   && sed -i -e "s/upload_max_filesize = 2M/upload_max_filesize = 100M/" /etc/php/7.0/fpm/php.ini \
@@ -30,6 +31,7 @@ RUN apt-get update \
   && mkdir -p        /var/www \
   && mkdir           /etc/service/nginx
 ADD build/conf/web.conf  /etc/nginx/sites-available/web.conf
+ADD build/conf/fpm7-symphony.conf /etc/nginx/fpm7-symphony.conf
 RUN ln -s /etc/nginx/sites-available/web.conf /etc/nginx/sites-enabled/web.conf
 ADD build/nginx.sh  /etc/service/nginx/run
 RUN chmod +x        /etc/service/nginx/run \
