@@ -34,6 +34,7 @@ RUN apt-get update \
   && mkdir           /etc/service/nginx
 ADD build/conf/web.conf  /etc/nginx/sites-available/web.conf
 ADD build/conf/fpm7-symphony.conf /etc/nginx/fpm7-symphony.conf
+ADD build/conf/99-myphp.ini /etc/php/7.0/fpm/conf.d/99-myphp.ini
 RUN ln -s /etc/nginx/sites-available/web.conf /etc/nginx/sites-enabled/web.conf
 ADD build/nginx.sh  /etc/service/nginx/run
 RUN chmod +x        /etc/service/nginx/run \
