@@ -2,11 +2,9 @@ web:
   build: .
   container_name: web
   volumes:
-    - /var/www/web:/var/www/web
-    - /var/www/moodledata:/var/www/moodledata
+    - /srv/docker/web:/var/www/web
   ports:
     - 80:80
-    - 443:443
   links:
     - db
 
@@ -14,6 +12,6 @@ db:
   image: mysql
   container_name: mysql
   environment:
-    - MYSQL_ROOT_PASSWORD=Wclr0cks!
+    - MYSQL_ROOT_PASSWORD=PE0NBl3mKnQVgNCM
   volumes:
-    - /root/mysql/datadir:/var/lib/mysql
+    - /srv/docker/mysql:/var/lib/mysql
