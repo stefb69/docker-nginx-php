@@ -31,7 +31,8 @@ RUN apt-get update \
   && sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php/7.0/fpm/php-fpm.conf \
   && sed -i -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php/7.0/fpm/php.ini \
   && mkdir -p        /var/www \
-  && mkdir           /etc/service/nginx
+  && mkdir           /etc/service/nginx \
+  && mkdir           /var/run/php
 ADD build/conf/web.conf  /etc/nginx/sites-available/web.conf
 ADD build/conf/fpm7-symphony.conf /etc/nginx/fpm7-symphony.conf
 ADD build/conf/myphp.ini /etc/php/7.0/fpm/conf.d/99-myphp.ini
