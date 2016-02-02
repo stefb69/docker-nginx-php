@@ -13,7 +13,7 @@ CMD ["/sbin/my_init"]
 
 # Nginx-PHP Installation
 RUN apt-get update \
-  && DEBIAN_FRONTEND="noninteractive" apt-get install -y emacs24-nox curl wget build-essential python-software-properties \
+  && DEBIAN_FRONTEND="noninteractive" apt-get install -y nano curl wget build-essential python-software-properties \
   && add-apt-repository -y ppa:ondrej/php \
   && add-apt-repository -y ppa:nginx/stable \
   && add-apt-repository -y ppa:chris-lea/node.js \
