@@ -11,9 +11,11 @@ RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 
 CMD ["/sbin/my_init"]
 
+RUN sed -i -e "s/archive\.ubuntu\.com/bouyguestelecom.ubuntu.lafibre.info/" /etc/apt/sources.list
+
 # Nginx-PHP Installation
 RUN apt-get update \
-  && DEBIAN_FRONTEND="noninteractive" apt-get install -y nano curl wget build-essential python-software-properties \
+  && DEBIAN_FRONTEND="noninteractive" apt-get install -y nano curl wget python-software-properties \
   && add-apt-repository -y ppa:ondrej/php \
   && add-apt-repository -y ppa:nginx/stable \
   && add-apt-repository -y ppa:chris-lea/node.js \
