@@ -41,7 +41,7 @@ RUN apt-get install -y --force-yes php7.0-cli php7.0-fpm php-apcu-bc php7.0-mysq
 RUN apt-get install -y nginx \
   && echo "daemon off;" >> /etc/nginx/nginx.conf \
   && mkdir -p        /var/www \
-  && mkdir           /etc/service/nginx \
+  && mkdir           /etc/service/nginx
 
 # Copy Confs
 ADD build/conf/web.conf  /etc/nginx/sites-available/web.conf
